@@ -1,3 +1,8 @@
+import { PubSub } from 'graphql-subscriptions'
+import { HIVE_ADDED } from '~/src/constants/topicNames'
+
+const pubsub = new PubSub()
+
 const hives = [
 	{
 		id: 1,
@@ -41,12 +46,22 @@ const resolvers = {
 	Mutation: {
 		addHive: (_, { hive }) => {
 			hives.push(hive)
+
+			pubsub.publish(HIVE_ADDED, {
+				hiveAdded: { hive: hive },
+			})
+
 			return hive
 		},
 		updateHive: (_, { id, location }) => {
 			const index = hives.findIndex(hive => hive.id == id)
 			hives[index].location = location
 			return hives[index]
+		},
+	},
+	Subscription: {
+		hiveAdded: {
+			subscribe: () => pubsub.asyncIterator(HIVE_ADDED),
 		},
 	},
 }

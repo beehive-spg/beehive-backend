@@ -38,6 +38,16 @@ const typeDefs = `
 			location: String
 		): Hive
 	}
+
+	type Subscription {
+		hiveAdded: Hive
+	}
+
+	schema {
+    	query: Query
+    	mutation: Mutation
+    	subscription: Subscription
+	}
 `
 
 const schema = makeExecutableSchema({
