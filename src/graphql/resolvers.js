@@ -48,7 +48,7 @@ const resolvers = {
 			hives.push(hive)
 
 			pubsub.publish(HIVE_ADDED, {
-				hiveAdded: { hive: hive },
+				hiveAdded: hive,
 			})
 
 			return hive
