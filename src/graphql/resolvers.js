@@ -38,10 +38,29 @@ const hives = [
 	},
 ]
 
+const drones = [
+	{
+		id: 1,
+		route: {
+			stops: [
+				{
+					longitude: 16.3568,
+					latitude: 48.1857,
+				},
+				{
+					longitude: 16.3709,
+					latitude: 48.2003,
+				},
+			],
+		},
+	},
+]
+
 const resolvers = {
 	Query: {
 		hives: () => hives,
 		hive: (_, { id }) => hives.find(hive => hive.id == id),
+		drones: () => drones,
 	},
 	Mutation: {
 		addHive: (_, { hive }) => {
