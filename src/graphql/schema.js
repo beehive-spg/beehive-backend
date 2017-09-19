@@ -12,6 +12,10 @@ const typeDefs = `
 		latitude: Float!
 	}
 
+	type Route {
+		stops: [Coordinates]
+	}
+
 	type Hive {
 		id: ID!,
 		location: String,
@@ -24,9 +28,15 @@ const typeDefs = `
 		coordinates: CoordinatesInput
 	}
 
+	type Drone {
+		id: ID!,
+		route: Route
+	}
+
 	type Query {
 		hives: [Hive]
 		hive(id: ID!): Hive
+		drones: [Drone]
 	}
 
 	type Mutation {
