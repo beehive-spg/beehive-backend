@@ -16,6 +16,10 @@ const typeDefs = `
 		stops: [Coordinates]
 	}
 
+	input RouteInput {
+		stops: [CoordinatesInput]!
+	}
+
 	type Hive {
 		id: ID!,
 		location: String,
@@ -33,6 +37,11 @@ const typeDefs = `
 		route: Route
 	}
 
+	input DroneInput {
+		id: ID!
+		route: RouteInput!
+	}
+
 	type Query {
 		hives: [Hive]
 		hive(id: ID!): Hive
@@ -47,6 +56,9 @@ const typeDefs = `
 			id: ID!
 			location: String
 		): Hive
+		addDrone(
+			drone: DroneInput!
+		): Drone
 	}
 
 	type Subscription {
