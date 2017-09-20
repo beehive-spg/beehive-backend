@@ -63,6 +63,7 @@ const typeDefs = `
 
 	type Subscription {
 		hiveAdded: Hive
+		droneAdded: Drone
 	}
 
 	schema {
