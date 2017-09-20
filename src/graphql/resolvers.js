@@ -80,6 +80,10 @@ const resolvers = {
 		addDrone: (_, { drone }) => {
 			drones.push(drone)
 
+			pubsub.publish(DRONE_ADDED, {
+				droneAdded: drone,
+			})
+
 			return drone
 		},
 	},
