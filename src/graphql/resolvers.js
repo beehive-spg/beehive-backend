@@ -1,5 +1,5 @@
 import { PubSub } from 'graphql-subscriptions'
-import { HIVE_ADDED } from '~/src/constants/topicNames'
+import { HIVE_ADDED, DRONE_ADDED } from '~/src/constants/topicNames'
 
 const pubsub = new PubSub()
 
@@ -80,12 +80,19 @@ const resolvers = {
 		addDrone: (_, { drone }) => {
 			drones.push(drone)
 
+			pubsub.publish(DRONE_ADDED, {
+				droneAdded: drone,
+			})
+
 			return drone
 		},
 	},
 	Subscription: {
 		hiveAdded: {
 			subscribe: () => pubsub.asyncIterator(HIVE_ADDED),
+		},
+		droneAdded: {
+			subscribe: () => pubsub.asyncIterator(DRONE_ADDED),
 		},
 	},
 }
