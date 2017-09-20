@@ -77,6 +77,11 @@ const resolvers = {
 			hives[index].location = location
 			return hives[index]
 		},
+		addDrone: (_, { drone }) => {
+			drones.push(drone)
+
+			return drone
+		},
 	},
 	Subscription: {
 		hiveAdded: {
