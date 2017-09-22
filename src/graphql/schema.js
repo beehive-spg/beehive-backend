@@ -13,11 +13,15 @@ const typeDefs = `
 	}
 
 	type Route {
-		stops: [Coordinates]
+		from: Coordinates
+		to: Coordinates
+		currentPosition: Coordinates
 	}
 
 	input RouteInput {
-		stops: [CoordinatesInput]!
+		from: CoordinatesInput!
+		to: CoordinatesInput!
+		currentPosition: CoordinatesInput
 	}
 
 	type Hive {
@@ -35,13 +39,11 @@ const typeDefs = `
 	type Drone {
 		id: ID!,
 		route: Route
-		currentPosition: Coordinates
 	}
 
 	input DroneInput {
 		id: ID!
 		route: RouteInput!
-		currentPosition: CoordinatesInput
 	}
 
 	type Query {
