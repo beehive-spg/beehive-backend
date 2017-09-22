@@ -42,20 +42,18 @@ const drones = [
 	{
 		id: 1,
 		route: {
-			stops: [
-				{
-					longitude: 16.3568,
-					latitude: 48.1857,
-				},
-				{
-					longitude: 16.3709,
-					latitude: 48.2003,
-				},
-			],
-		},
-		currentPosition: {
-			longitude: 16.3568,
-			latitude: 48.1857,
+			from: {
+				longitude: 16.3568,
+				latitude: 48.1857,
+			},
+			to: {
+				longitude: 16.3709,
+				latitude: 48.2003,
+			},
+			currentPosition: {
+				longitude: 16.3568,
+				latitude: 48.1857,
+			},
 		},
 	},
 ]
