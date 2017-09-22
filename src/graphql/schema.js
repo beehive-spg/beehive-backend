@@ -35,11 +35,13 @@ const typeDefs = `
 	type Drone {
 		id: ID!,
 		route: Route
+		currentPosition: Coordinates
 	}
 
 	input DroneInput {
 		id: ID!
 		route: RouteInput!
+		currentPosition: CoordinatesInput
 	}
 
 	type Query {

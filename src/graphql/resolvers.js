@@ -53,6 +53,10 @@ const drones = [
 				},
 			],
 		},
+		currentPosition: {
+			longitude: 16.3568,
+			latitude: 48.1857,
+		},
 	},
 ]
 
