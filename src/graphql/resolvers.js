@@ -1,6 +1,16 @@
 import { PubSub } from 'graphql-subscriptions'
 import { HIVE_ADDED, DRONE_ADDED } from '~/src/constants/topicNames'
 
+import fs from 'fs'
+let drones2 = []
+fs.readFile(`${__dirname}/drones.txt`, 'utf8', (err, data) => {
+	if (err) {
+		console.log(err) //eslint-disable-line
+	}
+
+	drones2 = JSON.parse(data)
+})
+
 const pubsub = new PubSub()
 
 const hives = [
@@ -38,7 +48,7 @@ const hives = [
 	},
 ]
 
-const drones = [
+/*const drones = [
 	{
 		id: 1,
 		route: {
@@ -56,13 +66,15 @@ const drones = [
 			},
 		},
 	},
-]
+]*/
 
 const resolvers = {
 	Query: {
 		hives: () => hives,
 		hive: (_, { id }) => hives.find(hive => hive.id == id),
-		drones: () => drones,
+		drones: () => {
+			return drones2
+		},
 	},
 	Mutation: {
 		addHive: (_, { hive }) => {
@@ -80,7 +92,7 @@ const resolvers = {
 			return hives[index]
 		},
 		addDrone: (_, { drone }) => {
-			drones.push(drone)
+			drones2.push(drone)
 
 			pubsub.publish(DRONE_ADDED, {
 				droneAdded: drone,
