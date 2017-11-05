@@ -56,13 +56,11 @@ const typeDefs = `
 		addHive(
 			hive: HiveInput!
 		): Hive
-		updateHive(
-			id: ID!
-			location: String
-		): Hive
 		addDrone(
 			drone: DroneInput!
 		): Drone
+		removeHive(id: ID!): ID
+		removeDrone(id: ID!): ID
 	}
 
 	type Subscription {

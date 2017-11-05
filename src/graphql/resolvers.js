@@ -2,18 +2,18 @@ import { PubSub } from 'graphql-subscriptions'
 import { HIVE_ADDED, DRONE_ADDED } from '~/src/constants/topicNames'
 
 import fs from 'fs'
-let drones2 = []
-fs.readFile(`${__dirname}/drones.txt`, 'utf8', (err, data) => {
+let drones = []
+fs.readFile(`${__dirname}/drones100.txt`, 'utf8', (err, data) => {
 	if (err) {
 		console.log(err) //eslint-disable-line
 	}
 
-	drones2 = JSON.parse(data)
+	drones = JSON.parse(data)
 })
 
 const pubsub = new PubSub()
 
-const hives = [
+let hives = [
 	{
 		id: 1,
 		location: 'hütteldorf',
@@ -48,32 +48,12 @@ const hives = [
 	},
 ]
 
-/*const drones = [
-	{
-		id: 1,
-		route: {
-			from: {
-				longitude: 16.3568,
-				latitude: 48.1857,
-			},
-			to: {
-				longitude: 16.3709,
-				latitude: 48.2003,
-			},
-			currentPosition: {
-				longitude: 16.3568,
-				latitude: 48.1857,
-			},
-		},
-	},
-]*/
-
 const resolvers = {
 	Query: {
 		hives: () => hives,
 		hive: (_, { id }) => hives.find(hive => hive.id == id),
 		drones: () => {
-			return drones2
+			return drones
 		},
 	},
 	Mutation: {
@@ -86,19 +66,22 @@ const resolvers = {
 
 			return hive
 		},
-		updateHive: (_, { id, location }) => {
-			const index = hives.findIndex(hive => hive.id == id)
-			hives[index].location = location
-			return hives[index]
-		},
 		addDrone: (_, { drone }) => {
-			drones2.push(drone)
+			drones.push(drone)
 
 			pubsub.publish(DRONE_ADDED, {
 				droneAdded: drone,
 			})
 
 			return drone
+		},
+		removeHive: (_, { id }) => {
+			hives = hives.filter(res => res.id !== id)
+			return id
+		},
+		removeDrone: (_, { id }) => {
+			drones = drones.filter(res => res.id !== id)
+			return id
 		},
 	},
 	Subscription: {
