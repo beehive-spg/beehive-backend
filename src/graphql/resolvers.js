@@ -1,9 +1,14 @@
 import { PubSub } from 'graphql-subscriptions'
-import { HIVE_ADDED, DRONE_ADDED } from '~/src/constants/topicNames'
+import {
+	HIVE_ADDED,
+	DRONE_ADDED,
+	HIVE_REMOVED,
+	DRONE_REMOVED,
+} from '~/src/constants/topicNames'
 
 import fs from 'fs'
 let drones = []
-fs.readFile(`${__dirname}/drones100.txt`, 'utf8', (err, data) => {
+fs.readFile(`${__dirname}/drones1000.txt`, 'utf8', (err, data) => {
 	if (err) {
 		console.log(err) //eslint-disable-line
 	}
@@ -11,42 +16,16 @@ fs.readFile(`${__dirname}/drones100.txt`, 'utf8', (err, data) => {
 	drones = JSON.parse(data)
 })
 
-const pubsub = new PubSub()
+let hives = []
+fs.readFile(`${__dirname}/hives.json`, 'utf8', (err, data) => {
+	if (err) {
+		console.log(err) //eslint-disable-line
+	}
 
-let hives = [
-	{
-		id: 1,
-		location: 'hütteldorf',
-		coordinates: {
-			longitude: 16.271334,
-			latitude: 48.20962,
-		},
-	},
-	{
-		id: 2,
-		location: 'leopoldau',
-		coordinates: {
-			longitude: 16.451428,
-			latitude: 48.277378,
-		},
-	},
-	{
-		id: 3,
-		location: 'spengergasse',
-		coordinates: {
-			longitude: 16.3568,
-			latitude: 48.1857,
-		},
-	},
-	{
-		id: 4,
-		location: 'karlsplatz',
-		coordinates: {
-			longitude: 16.3709,
-			latitude: 48.2003,
-		},
-	},
-]
+	hives = JSON.parse(data)
+})
+
+const pubsub = new PubSub()
 
 const resolvers = {
 	Query: {
@@ -76,10 +55,18 @@ const resolvers = {
 			return drone
 		},
 		removeHive: (_, { id }) => {
+			pubsub.publish(HIVE_REMOVED, {
+				hiveRemoved: id,
+			})
+
 			hives = hives.filter(res => res.id !== id)
 			return id
 		},
 		removeDrone: (_, { id }) => {
+			pubsub.publish(DRONE_REMOVED, {
+				droneRemoved: id,
+			})
+
 			drones = drones.filter(res => res.id !== id)
 			return id
 		},
@@ -90,6 +77,12 @@ const resolvers = {
 		},
 		droneAdded: {
 			subscribe: () => pubsub.asyncIterator(DRONE_ADDED),
+		},
+		hiveRemoved: {
+			subscribe: () => pubsub.asyncIterator(HIVE_REMOVED),
+		},
+		droneRemoved: {
+			subscribe: () => pubsub.asyncIterator(DRONE_REMOVED),
 		},
 	},
 }
