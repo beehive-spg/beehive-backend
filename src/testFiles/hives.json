@@ -5,7 +5,8 @@
 		"coordinates": {
 			"longitude": 16.3568,
 			"latitude": 48.1857
-		}
+		},
+		"reachable": [18, 19, 17, 8, 7]
 	},
 	{
 		"id": 1,
@@ -13,7 +14,8 @@
 		"coordinates": {
 			"longitude": 16.36605380000003,
 			"latitude": 48.2076579
-		}
+		},
+		"reachable": [6, 11, 12, 2, 16]
 	},
 	{
 		"id": 2,
@@ -21,7 +23,8 @@
 		"coordinates": {
 			"longitude": 16.373213299999975,
 			"latitude": 48.2089816
-		}
+		},
+		"reachable": [1, 11, 12, 3, 5, 6]
 	},
 	{
 		"id": 3,
@@ -29,7 +32,8 @@
 		"coordinates": {
 			"longitude": 16.37105329999997,
 			"latitude": 48.21770540000001
-		}
+		},
+		"reachable": [12, 11, 1, 2]
 	},
 	{
 		"id": 4,
@@ -37,7 +41,8 @@
 		"coordinates": {
 			"longitude": 16.37574159999997,
 			"latitude": 48.2114105
-		}
+		},
+		"reachable": [3, 2, 5, 1, 22]
 	},
 	{
 		"id": 5,
@@ -45,7 +50,8 @@
 		"coordinates": {
 			"longitude": 16.38160330000005,
 			"latitude": 48.2075967
-		}
+		},
+		"reachable": [22, 4, 2, 6, 21]
 	},
 	{
 		"id": 6,
@@ -53,7 +59,8 @@
 		"coordinates": {
 			"longitude": 16.37054790000002,
 			"latitude": 48.2004387
-		}
+		},
+		"reachable": [20, 5, 1, 2, 17]
 	},
 	{
 		"id": 7,
@@ -61,7 +68,8 @@
 		"coordinates": {
 			"longitude": 16.35389310000005,
 			"latitude": 48.19746199999999
-		}
+		},
+		"reachable": [0, 16, 9, 8, 17]
 	},
 	{
 		"id": 8,
@@ -69,7 +77,8 @@
 		"coordinates": {
 			"longitude": 16.344824700000004,
 			"latitude": 48.1924122
-		}
+		},
+		"reachable": [7, 9, 17, 0, 16]
 	},
 	{
 		"id": 9,
@@ -77,7 +86,8 @@
 		"coordinates": {
 			"longitude": 16.337701899999956,
 			"latitude": 48.19679909999999
-		}
+		},
+		"reachable": [8, 16, 7, 10]
 	},
 	{
 		"id": 10,
@@ -85,7 +95,8 @@
 		"coordinates": {
 			"longitude": 16.33289590000004,
 			"latitude": 48.202361
-		}
+		},
+		"reachable": [9, 16, 15]
 	},
 	{
 		"id": 11,
@@ -93,7 +104,8 @@
 		"coordinates": {
 			"longitude": 16.357248600000048,
 			"latitude": 48.21086849999999
-		}
+		},
+		"reachable": [12, 1, 2, 15, 13]
 	},
 	{
 		"id": 12,
@@ -101,7 +113,8 @@
 		"coordinates": {
 			"longitude": 16.359082100000023,
 			"latitude": 48.21540119999999
-		}
+		},
+		"reachable": [1, 2, 15, 13, 3, 14]
 	},
 	{
 		"id": 13,
@@ -109,7 +122,8 @@
 		"coordinates": {
 			"longitude": 16.346866099999943,
 			"latitude": 48.2206898
-		}
+		},
+		"reachable": [12, 11, 14]
 	},
 	{
 		"id": 14,
@@ -117,7 +131,8 @@
 		"coordinates": {
 			"longitude": 16.35318159999997,
 			"latitude": 48.218511
-		}
+		},
+		"reachable": [13, 12]
 	},
 	{
 		"id": 15,
@@ -125,7 +140,8 @@
 		"coordinates": {
 			"longitude": 16.349361499999986,
 			"latitude": 48.2033958
-		}
+		},
+		"reachable": [10, 16, 7, 11]
 	},
 	{
 		"id": 16,
@@ -133,7 +149,8 @@
 		"coordinates": {
 			"longitude": 16.347037799999953,
 			"latitude": 48.1987534
-		}
+		},
+		"reachable": [15, 10, 9, 8, 7]
 	},
 	{
 		"id": 17,
@@ -141,7 +158,8 @@
 		"coordinates": {
 			"longitude": 16.364232700000002,
 			"latitude": 48.1940856
-		}
+		},
+		"reachable": [6, 7, 0, 20]
 	},
 	{
 		"id": 18,
@@ -149,7 +167,8 @@
 		"coordinates": {
 			"longitude": 16.358833000000004,
 			"latitude": 48.18084899999999
-		}
+		},
+		"reachable": [0, 19]
 	},
 	{
 		"id": 19,
@@ -157,7 +176,8 @@
 		"coordinates": {
 			"longitude": 16.37307820000001,
 			"latitude": 48.1861815
-		}
+		},
+		"reachable": [18, 20]
 	},
 	{
 		"id": 20,
@@ -165,7 +185,8 @@
 		"coordinates": {
 			"longitude": 16.38095469999996,
 			"latitude": 48.1915585
-		}
+		},
+		"reachable": [19, 17, 21, 6]
 	},
 	{
 		"id": 21,
@@ -173,7 +194,8 @@
 		"coordinates": {
 			"longitude": 16.385261799999967,
 			"latitude": 48.20193860000001
-		}
+		},
+		"reachable": [6, 20, 22, 5]
 	},
 	{
 		"id": 22,
@@ -181,6 +203,7 @@
 		"coordinates": {
 			"longitude": 16.39416700000004,
 			"latitude": 48.20722199999999
-		}
+		},
+		"reachable": [21, 5]
 	}
 ]
