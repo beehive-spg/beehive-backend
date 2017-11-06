@@ -1,4 +1,8 @@
+import fs from 'fs'
 import { PubSub } from 'graphql-subscriptions'
+
+import generator from '~/src/generator/hopGenerator'
+
 import {
 	HIVE_ADDED,
 	DRONE_ADDED,
@@ -6,9 +10,8 @@ import {
 	DRONE_REMOVED,
 } from '~/src/constants/topicNames'
 
-import fs from 'fs'
 let drones = []
-fs.readFile(`${__dirname}/drones1000.txt`, 'utf8', (err, data) => {
+fs.readFile(`${__dirname}/../testFiles/drones100.txt`, 'utf8', (err, data) => {
 	if (err) {
 		console.log(err) //eslint-disable-line
 	}
@@ -17,7 +20,7 @@ fs.readFile(`${__dirname}/drones1000.txt`, 'utf8', (err, data) => {
 })
 
 let hives = []
-fs.readFile(`${__dirname}/hives.json`, 'utf8', (err, data) => {
+fs.readFile(`${__dirname}/../testFiles/hives.json`, 'utf8', (err, data) => {
 	if (err) {
 		console.log(err) //eslint-disable-line
 	}
@@ -26,13 +29,14 @@ fs.readFile(`${__dirname}/hives.json`, 'utf8', (err, data) => {
 })
 
 const pubsub = new PubSub()
+generator(pubsub)
 
 const resolvers = {
 	Query: {
 		hives: () => hives,
 		hive: (_, { id }) => hives.find(hive => hive.id == id),
 		drones: () => {
-			return drones
+			return []
 		},
 	},
 	Mutation: {
