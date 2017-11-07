@@ -64,6 +64,7 @@ const getProperties = (id, hives) => {
 	hives.forEach(res => {
 		if (res.id === id) {
 			hive = {
+				location: res.location,
 				longitude: res.coordinates.longitude,
 				latitude: res.coordinates.latitude,
 			}
