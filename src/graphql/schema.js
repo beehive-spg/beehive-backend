@@ -3,11 +3,13 @@ import resolvers from './resolvers'
 
 const typeDefs = `
 	type Coordinates {
+		location: String,
 		longitude: Float!,
 		latitude: Float!
 	}
 
 	input CoordinatesInput {
+		location: String,
 		longitude: Float!,
 		latitude: Float!
 	}
@@ -42,7 +44,7 @@ const typeDefs = `
 	}
 
 	input DroneInput {
-		id: ID!
+		id: ID!,
 		route: RouteInput!
 	}
 
