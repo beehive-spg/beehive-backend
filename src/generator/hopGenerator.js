@@ -88,7 +88,7 @@ const getTime = (from, to) => {
 	const fromPoint = turf.point([from.longitude, from.latitude])
 	const toPoint = turf.point([to.longitude, to.latitude])
 	const distance = turf.distance(fromPoint, toPoint)
-	const velocity = 60
+	const velocity = 105
 
 	const time = distance / velocity
 
