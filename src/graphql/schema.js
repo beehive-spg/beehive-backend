@@ -48,10 +48,31 @@ const typeDefs = `
 		route: RouteInput!
 	}
 
+	type Customer {
+		id: ID!
+		coordinates: Coordinates
+	}
+
+	input CustomerInput {
+		id: ID
+		coordinates: CoordinatesInput!
+	}
+
+	type Order {
+		shop: ID!
+		customer: Customer
+	}
+
+	input OrderInput {
+		shop: ID!
+		customer: CustomerInput
+	}
+
 	type Query {
 		hives: [Hive]
 		hive(id: ID!): Hive
 		drones: [Drone]
+		orders: [Order]
 	}
 
 	type Mutation {
@@ -63,6 +84,7 @@ const typeDefs = `
 		): Drone
 		removeHive(id: ID!): ID
 		removeDrone(id: ID!): ID
+		addOrder(order: OrderInput!): Boolean
 	}
 
 	type Subscription {
@@ -73,9 +95,9 @@ const typeDefs = `
 	}
 
 	schema {
-    	query: Query
-    	mutation: Mutation
-    	subscription: Subscription
+		query: Query
+		mutation: Mutation
+		subscription: Subscription
 	}
 `
 
