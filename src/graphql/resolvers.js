@@ -2,6 +2,7 @@ import fs from 'fs'
 import { PubSub } from 'graphql-subscriptions'
 
 import generator from '~/src/generator/hopGenerator'
+import publishOrder from '~/src/connect/send'
 
 import {
 	HIVE_ADDED,
@@ -39,9 +40,6 @@ const resolvers = {
 		hive: (_, { id }) => hives.find(hive => hive.id == id),
 		drones: () => {
 			return []
-		},
-		orders: () => {
-			return orders
 		},
 	},
 	Mutation: {
@@ -81,6 +79,7 @@ const resolvers = {
 		},
 		addOrder: (_, { order }) => {
 			orders.push(order)
+			publishOrder(order)
 			return true
 		},
 	},

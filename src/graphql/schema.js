@@ -48,19 +48,9 @@ const typeDefs = `
 		route: RouteInput!
 	}
 
-	type Customer {
-		id: ID!
-		coordinates: Coordinates
-	}
-
 	input CustomerInput {
 		id: ID
 		coordinates: CoordinatesInput!
-	}
-
-	type Order {
-		shop: ID!
-		customer: Customer
 	}
 
 	input OrderInput {
@@ -72,7 +62,6 @@ const typeDefs = `
 		hives: [Hive]
 		hive(id: ID!): Hive
 		drones: [Drone]
-		orders: [Order]
 	}
 
 	type Mutation {
