@@ -31,12 +31,17 @@ fs.readFile(`${__dirname}/../testFiles/hives.json`, 'utf8', (err, data) => {
 const pubsub = new PubSub()
 generator(pubsub)
 
+const orders = []
+
 const resolvers = {
 	Query: {
 		hives: () => hives,
 		hive: (_, { id }) => hives.find(hive => hive.id == id),
 		drones: () => {
 			return []
+		},
+		orders: () => {
+			return orders
 		},
 	},
 	Mutation: {
@@ -73,6 +78,10 @@ const resolvers = {
 
 			drones = drones.filter(res => res.id !== id)
 			return id
+		},
+		addOrder: (_, { order }) => {
+			orders.push(order)
+			return true
 		},
 	},
 	Subscription: {
