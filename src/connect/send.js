@@ -8,7 +8,14 @@ const exchange = rabbit.default()
 const orders = exchange.queue({ name: 'orders' }) //eslint-disable-line
 
 const publishOrder = order => {
-	exchange.publish(order, { key: 'orders' })
+	//TODO get customer from db into customerID
+	const customerId = 1
+
+	const orderObject = {
+		from: order.shop,
+		to: customerId,
+	}
+	exchange.publish(orderObject, { key: 'orders' })
 }
 
 export default publishOrder
