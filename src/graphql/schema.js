@@ -49,7 +49,6 @@ const typeDefs = `
 	}
 
 	input CustomerInput {
-		id: ID
 		coordinates: CoordinatesInput!
 	}
 
