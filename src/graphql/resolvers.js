@@ -78,8 +78,12 @@ const resolvers = {
 			return id
 		},
 		addOrder: (_, { order }) => {
+			//TODO finding should be done in send module, as soon as the db is available
+			const to = hives.find(
+				hive => hive.location === order.customer.coordinates.location,
+			)
 			orders.push(order)
-			publishOrder(order)
+			publishOrder(order, to.id)
 			return true
 		},
 	},
