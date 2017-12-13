@@ -7,13 +7,13 @@ const rabbit = jackrabbit(process.env.CLOUDAMQP_URL)
 const exchange = rabbit.default()
 const orders = exchange.queue({ name: 'new_orders' }) //eslint-disable-line
 
-const publishOrder = order => {
+const publishOrder = (order, to) => {
 	//TODO get customer from db into customerID
-	const customerId = 1
 
+	const from = parseInt(order.shop)
 	const orderObject = {
-		from: order.shop,
-		to: customerId,
+		from,
+		to,
 	}
 	exchange.publish(orderObject, { key: 'new_orders' })
 }
