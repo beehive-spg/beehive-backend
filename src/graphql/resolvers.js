@@ -2,7 +2,8 @@ import fs from 'fs'
 import { PubSub } from 'graphql-subscriptions'
 
 import generator from '~/src/generator/hopGenerator'
-import publishOrder from '~/src/connect/send'
+import { produceOrder } from '~/src/connect/producers'
+import { consumeHops } from '~/src/connect/consumers'
 
 import {
 	HIVE_ADDED,
@@ -30,7 +31,8 @@ fs.readFile(`${__dirname}/../testFiles/hives.json`, 'utf8', (err, data) => {
 })
 
 const pubsub = new PubSub()
-generator(pubsub)
+// generator(pubsub)
+consumeHops(pubsub)
 
 const orders = []
 
@@ -78,12 +80,8 @@ const resolvers = {
 			return id
 		},
 		addOrder: (_, { order }) => {
-			//TODO finding should be done in send module, as soon as the db is available
-			const to = hives.find(
-				hive => hive.location === order.customer.coordinates.location,
-			)
 			orders.push(order)
-			publishOrder(order, to.id)
+			produceOrder(order)
 			return true
 		},
 	},
@@ -104,3 +102,4 @@ const resolvers = {
 }
 
 export default resolvers
+export { pubsub, hives }
