@@ -14,7 +14,11 @@ const app = new koa()
 const router = new koaRouter()
 const PORT = 8080
 
-const whitelist = [`http://localhost:${PORT}`, 'http://localhost:3000']
+const whitelist = [
+	`http://localhost:${PORT}`,
+	'http://localhost:3000',
+	'http://localhost:5000',
+]
 
 function checkOriginAgainstWhitelist(ctx) {
 	const requestOrigin = ctx.accept.headers.origin
