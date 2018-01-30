@@ -8,7 +8,7 @@ import { createServer } from 'http'
 import { SubscriptionServer } from 'subscriptions-transport-ws'
 import { graphqlKoa, graphiqlKoa } from 'apollo-server-koa'
 
-import schema from './graphql/schema'
+import schema from './graphql'
 
 const app = new koa()
 const router = new koaRouter()

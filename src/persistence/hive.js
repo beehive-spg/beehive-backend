@@ -8,12 +8,13 @@ const getHives = async () => {
 	return data.data.map(h => {
 		const hive = h[0]
 		return {
-			id: hive.hive.id,
-			name: hive.hive.name,
-			coordinates: {
-				location: hive.address,
-				longitude: hive.xcoord,
-				latitude: hive.ycoord,
+			id: hive.id,
+			address: hive.address,
+			longitude: hive.xcoord,
+			latitude: hive.ycoord,
+			type: {
+				id: hive.hive.id,
+				name: hive.hive.name,
 			},
 		}
 	})
