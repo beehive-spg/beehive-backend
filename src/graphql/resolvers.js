@@ -1,9 +1,11 @@
 import fs from 'fs'
 import { PubSub } from 'graphql-subscriptions'
 
-import generator from '~/src/generator/hopGenerator'
+//import generator from '~/src/generator/hopGenerator'
 import { produceOrder } from '~/src/connect/producers'
 import { consumeHops } from '~/src/connect/consumers'
+
+import { getHives } from '~/src/persistence/hive'
 
 import {
 	HIVE_ADDED,
@@ -38,7 +40,8 @@ const orders = []
 
 const resolvers = {
 	Query: {
-		hives: () => hives,
+		//hives: () => hives,
+		hives: () => getHives(),
 		hive: (_, { id }) => hives.find(hive => hive.id == id),
 		drones: () => {
 			return []
