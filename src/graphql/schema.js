@@ -28,7 +28,7 @@ const typeDefs = `
 
 	type Hive {
 		id: ID!,
-		location: String,
+		name: String,
 		coordinates: Coordinates
 	}
 
