@@ -1,7 +1,7 @@
 import path from 'path'
 import jackrabbit from 'jackrabbit'
 
-import { DRONE_ADDED, DRONE_REMOVED } from '~/src/constants/topicNames'
+import { DRONE_ADDED, DRONE_REMOVED } from '~/src/constants'
 import { pubsub, hives } from '~/src/graphql/resolvers'
 
 require('dotenv').config({ path: path.join(process.env.PWD, '.env') })

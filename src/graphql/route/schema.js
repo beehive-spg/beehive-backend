@@ -17,4 +17,9 @@ const query = `
 	route(id: ID!): Route
 `
 
-export { schema, query }
+const subscription = `
+	startHop: Hop,
+	endHop: ID
+`
+
+export { schema, query, subscription }

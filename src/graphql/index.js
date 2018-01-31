@@ -1,8 +1,11 @@
 import { makeExecutableSchema } from 'graphql-tools'
 import { graphqls2s } from 'graphql-s2s'
 import { glue } from 'schemaglue'
+import { PubSub } from 'graphql-subscriptions'
 
 const transpileSchema = graphqls2s.transpileSchema
+
+const pubsub = new PubSub()
 
 const options = {
 	ignore: '**/index.js',
@@ -15,4 +18,5 @@ const executableSchema = makeExecutableSchema({
 	resolvers: resolver,
 })
 
+export { pubsub }
 export default executableSchema
