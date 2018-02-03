@@ -5,8 +5,9 @@ const schema = `
 		latitude: Float!
 	}
 
-	type Building inherits Location {
+	type Building {
 		id: ID!,
+		location: Location!
 		type: BuildingType!
 	}
 

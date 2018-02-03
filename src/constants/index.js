@@ -1,6 +1,2 @@
-export const HIVE_ADDED = 'HIVE_ADDED'
-export const DRONE_ADDED = 'DRONE_ADDED'
-export const HIVE_REMOVED = 'HIVE_REMOVED'
-export const DRONE_REMOVED = 'DRONE_REMOVED'
-export const START_HOP = 'START_HOP'
-export const END_HOP = 'END_HOP'
+export const DEPARTURE = 'DEPARTURE'
+export const ARRIVAL = 'ARRIVAL'

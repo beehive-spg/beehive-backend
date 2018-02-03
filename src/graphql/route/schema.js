@@ -3,7 +3,6 @@ const schema = `
 		id: ID!,
 		start: Building!,
 		end: Building!,
-		drone: ID!
 	}
 
 	type Route {
@@ -17,9 +16,4 @@ const query = `
 	route(id: ID!): Route
 `
 
-const subscription = `
-	startHop: Hop,
-	endHop: ID
-`
-
-export { schema, query, subscription }
+export { schema, query }

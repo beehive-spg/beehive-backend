@@ -1,8 +1,9 @@
-import { getOrders, getOrder, createOrder } from '~/src/persistence/order'
+import { orders, order, createOrder } from '~/src/controller/order'
+
 const resolver = {
 	Query: {
-		orders: () => getOrders(),
-		order: (_, { id }) => getOrder(id),
+		orders: () => orders(),
+		order: (_, { id }) => order(id),
 	},
 	Mutation: {
 		addOrder: (_, { order }) => createOrder(order),

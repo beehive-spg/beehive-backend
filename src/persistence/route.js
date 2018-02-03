@@ -1,15 +1,13 @@
-import path from 'path'
-import axios from 'axios'
-
-require('dotenv').config({ path: path.join(process.env.PWD, '.env') })
+import { axiosInstance } from '~/src/server'
 
 const getRoutes = async () => {
-	const data = await axios.get(`${process.env.DATABASE_URL}/drones`)
-	return []
+	const data = await axiosInstance.get('/routes')
+	return data.data
 }
 
 const getRoute = async id => {
-	return null
+	const data = await axiosInstance(`/routes?id=${id}`)
+	return data.data
 }
 
 export { getRoutes, getRoute }

@@ -1,8 +1,8 @@
-import { getHives } from '~/src/persistence/hive'
+import { hives } from '~/src/controller/hive'
 
 const resolver = {
 	Query: {
-		hives: () => getHives(),
+		hives: () => hives(),
 	},
 }
 

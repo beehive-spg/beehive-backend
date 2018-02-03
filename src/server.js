@@ -1,3 +1,4 @@
+import path from 'path'
 import koa from 'koa'
 import cors from 'kcors'
 import koaRouter from 'koa-router'
@@ -7,8 +8,16 @@ import { execute, subscribe } from 'graphql'
 import { createServer } from 'http'
 import { SubscriptionServer } from 'subscriptions-transport-ws'
 import { graphqlKoa, graphiqlKoa } from 'apollo-server-koa'
+import axios from 'axios'
 
 import schema from './graphql'
+
+require('dotenv').config({ path: path.join(process.env.PWD, '.env') })
+
+const axiosInstance = axios.create({
+	baseURL: process.env.DATABASE_URL,
+	timeout: 1000,
+})
 
 const app = new koa()
 const router = new koaRouter()
@@ -63,3 +72,5 @@ ws.listen(PORT, () => {
 		},
 	)
 })
+
+export { axiosInstance }
