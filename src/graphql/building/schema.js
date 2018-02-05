@@ -8,17 +8,24 @@ const schema = `
 	type Building {
 		id: ID!,
 		location: Location!
-		type: BuildingType!
+		type: [BuildingType]!
 	}
 
 	type Hive {
 		id: ID!,
-		name: String!
+		name: String!,
+		workload: Float
+	}
+
+	type Shop {
+		id: ID!,
+		name: String
 	}
 `
 
 const query = `
-	hives: [Building]
+	hives: [Building],
+	shops: [Building]
 `
 
 export { schema, query }

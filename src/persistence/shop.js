@@ -1,0 +1,8 @@
+import { axiosInstance } from '~/src/server'
+
+const getShops = async () => {
+	const data = await axiosInstance.get('/shops')
+	return data.data
+}
+
+export { getShops }
