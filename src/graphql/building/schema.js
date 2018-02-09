@@ -21,11 +21,16 @@ const schema = `
 		id: ID!,
 		name: String
 	}
+
+	type Customer {
+		id: ID!
+	}
 `
 
 const query = `
 	hives: [Building],
-	shops: [Building]
+	shops: [Building],
+	customers: [Building]
 `
 
 export { schema, query }
