@@ -4,18 +4,19 @@ const shops = async () => {
 	const objects = await getShops()
 
 	return objects.map(building => {
-		const shopObjects = building.shop.map(shop => {
+		const shopObjects = building['building/shop'].map(shop => {
 			return {
-				id: shop.id,
-				name: shop.name,
+				id: shop['db/id'],
+				name: shop['shop/name'],
 			}
 		})
+
 		return {
-			id: building.id,
+			id: building['db/id'],
 			location: {
-				address: building.address,
-				longitude: building.xcoord,
-				latitude: building.ycoord,
+				address: building['building/address'],
+				longitude: building['building/xcoord'],
+				latitude: building['building/ycoord'],
 			},
 			type: shopObjects,
 		}

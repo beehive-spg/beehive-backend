@@ -4,18 +4,18 @@ const customers = async () => {
 	const objects = await getCustomers()
 
 	return objects.map(building => {
-		const customerObjects = building.customer.map(customer => {
+		const customerObjects = building['building/customer'].map(customer => {
 			return {
-				id: customer.id,
+				id: customer['db/id'],
 			}
 		})
 
 		return {
-			id: building.id,
+			id: building['db/id'],
 			location: {
-				address: building.address,
-				longitude: building.xcoord,
-				latitude: building.ycoord,
+				address: building['building/address'],
+				longitude: building['building/xcoord'],
+				latitude: building['building/ycoord'],
 			},
 			type: customerObjects,
 		}

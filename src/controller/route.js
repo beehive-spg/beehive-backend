@@ -18,18 +18,24 @@ const route = async id => {
 }
 
 const buildRoute = (route, hiveObjects) => {
-	const hops = route._route.map(hop => {
-		const start = hiveObjects.find(building => building.id === hop.start.id)
-		const end = hiveObjects.find(building => building.id === hop.end.id)
+	const hops = route['hop/_route'].map(hop => {
+		const start = hiveObjects.find(
+			building => building.id === hop['hop/start']['db/id'],
+		)
+		const end = hiveObjects.find(
+			building => building.id === hop['hop/end']['db/id'],
+		)
 
 		return {
-			id: hop.id,
+			id: hop['db/id'],
 			start,
 			end,
 		}
 	})
+
 	return {
-		id: route.id,
+		//id: route.id,
+		id: route['db/id'],
 		hops,
 	}
 }

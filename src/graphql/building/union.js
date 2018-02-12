@@ -3,9 +3,9 @@ const schema = `union BuildingType = Hive | Shop | Customer`
 const resolver = {
 	BuildingType: {
 		__resolveType(obj, context, info) {
-			return obj.workload
+			return obj.demand
 				? 'Hive'
-				: !obj.name ? 'Customer' : !obj.workload ? 'Shop' : null
+				: !obj.name ? 'Customer' : !obj.demand ? 'Shop' : null
 		},
 	},
 }

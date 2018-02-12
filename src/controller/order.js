@@ -14,10 +14,11 @@ const createOrder = async order => {
 	}
 
 	const data = await postCustomer(customer)
+	console.log(data)
 
 	const orderObject = {
 		shop: order.shop,
-		customer: `${data.data.id}`,
+		customer: `${data.data['db/id']}`,
 	}
 	produceOrder(orderObject)
 

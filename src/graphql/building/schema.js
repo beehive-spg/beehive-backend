@@ -14,7 +14,7 @@ const schema = `
 	type Hive {
 		id: ID!,
 		name: String!,
-		workload: Float
+		demand: Float
 	}
 
 	type Shop {
