@@ -34,7 +34,6 @@ const buildRoute = (route, hiveObjects) => {
 	})
 
 	return {
-		//id: route.id,
 		id: route['db/id'],
 		hops,
 	}

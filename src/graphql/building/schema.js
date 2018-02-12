@@ -30,7 +30,8 @@ const schema = `
 const query = `
 	hives: [Building],
 	shops: [Building],
-	customers: [Building]
+	customers: [Building],
+	customer(id: ID!): Building
 `
 
 export { schema, query }
