@@ -9,7 +9,6 @@ const hives = async () => {
 }
 
 const buildHive = building => {
-	console.log(building)
 	const hive = building['building/hive']
 	const hiveObjects = [
 		{
