@@ -7,7 +7,8 @@ const schema = `
 
 	type Route {
 		id: ID!,
-		hops: [Hop]!
+		hops: [Hop]!,
+		origin: String!
 	}
 `
 

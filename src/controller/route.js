@@ -28,9 +28,15 @@ const buildRoute = route => {
 		}
 	})
 
+	const origin =
+		route['route/origin']['db/ident'] === 'route.origin/order'
+			? 'order'
+			: 'distribution'
+
 	return {
 		id: route['db/id'],
 		hops,
+		origin,
 	}
 }
 
