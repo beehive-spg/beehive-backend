@@ -3,6 +3,8 @@ const schema = `
 		id: ID!,
 		shop: Building!,
 		customer: Building!
+		route: ID!,
+		source: String
 	}
 
 	input CoordinatesInput {

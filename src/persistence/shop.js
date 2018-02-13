@@ -5,4 +5,9 @@ const getShops = async () => {
 	return data.data
 }
 
-export { getShops }
+const getShop = async id => {
+	const data = await axiosInstance.get(`/one/shops/${id}`)
+	return data.data
+}
+
+export { getShops, getShop }

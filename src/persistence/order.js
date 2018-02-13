@@ -5,7 +5,8 @@ const getOrders = async () => {
 }
 
 const getOrder = async id => {
-	return null
+	const data = await axiosInstance.get(`/one/orders/${id}`)
+	return data.data
 }
 
 export { getOrders, getOrder }

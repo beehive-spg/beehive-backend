@@ -5,7 +5,8 @@ const getCustomers = async () => {
 	return data.data
 }
 const getCustomer = async id => {
-	const data = await axiosInstance.get(`/customers?id=${id}`)
+	//const data = await axiosInstance.get(`/customers?id=${id}`)
+	const data = await axiosInstance.get(`/one/customers/${id}`)
 	return data.data
 }
 

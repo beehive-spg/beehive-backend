@@ -31,6 +31,7 @@ const query = `
 	hives: [Building],
 	shops: [Building],
 	customers: [Building],
+	shop(id: ID!): Building,
 	customer(id: ID!): Building
 `
 
