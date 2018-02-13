@@ -13,7 +13,7 @@ const schema = `
 
 	type Hive {
 		id: ID!,
-		name: String!,
+		name: String,
 		demand: Float
 	}
 

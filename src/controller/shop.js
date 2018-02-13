@@ -32,4 +32,4 @@ const buildShop = building => {
 	}
 }
 
-export { shops, shop }
+export { shops, shop, buildShop }

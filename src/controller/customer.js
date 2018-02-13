@@ -31,4 +31,4 @@ const buildCustomer = building => {
 	}
 }
 
-export { customers, customer }
+export { customers, customer, buildCustomer }
