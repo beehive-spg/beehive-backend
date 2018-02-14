@@ -9,4 +9,9 @@ const getOrder = async id => {
 	return data.data
 }
 
-export { getOrders, getOrder }
+const getOrderFromRoute = async routeId => {
+	const data = await axiosInstance.get(`/orders/${routeId}`)
+	return data.data
+}
+
+export { getOrders, getOrder, getOrderFromRoute }

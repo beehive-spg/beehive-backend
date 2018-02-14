@@ -1,6 +1,6 @@
 import { shop } from '~/src/controller/shop'
 import { customer } from '~/src/controller/customer'
-import { getOrder } from '~/src/persistence/order'
+import { getOrder, getOrderFromRoute } from '~/src/persistence/order'
 import { postCustomer } from '~/src/persistence/customer'
 import { produceOrder } from '~/src/connect/producers'
 
@@ -8,6 +8,11 @@ const orders = () => {}
 
 const order = async id => {
 	const object = await getOrder(id)
+	return buildOrder(object)
+}
+
+const orderFromRoute = async routeId => {
+	const object = await getOrderFromRoute(routeId)
 	return buildOrder(object)
 }
 
@@ -47,4 +52,4 @@ const createOrder = async order => {
 	return true
 }
 
-export { orders, order, createOrder }
+export { orders, order, orderFromRoute, createOrder }

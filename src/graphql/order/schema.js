@@ -21,7 +21,8 @@ const schema = `
 
 const query = `
 	orders: [Order],
-	order(id: ID!): Order
+	order(id: ID!): Order,
+	orderFromRoute(routeId: ID!): Order
 `
 
 const mutation = `
