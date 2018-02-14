@@ -13,19 +13,26 @@ const schema = `
 
 	type Hive {
 		id: ID!,
-		name: String!,
-		workload: Float
+		name: String,
+		demand: Float
 	}
 
 	type Shop {
 		id: ID!,
 		name: String
 	}
+
+	type Customer {
+		id: ID!
+	}
 `
 
 const query = `
 	hives: [Building],
-	shops: [Building]
+	shops: [Building],
+	customers: [Building],
+	shop(id: ID!): Building,
+	customer(id: ID!): Building
 `
 
 export { schema, query }

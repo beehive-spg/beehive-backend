@@ -1,9 +1,17 @@
 import { axiosInstance } from '~/src/server'
 
-const getCustomer = id => {}
+const getCustomers = async () => {
+	const data = await axiosInstance.get('/customers')
+	return data.data
+}
+const getCustomer = async id => {
+	//const data = await axiosInstance.get(`/customers?id=${id}`)
+	const data = await axiosInstance.get(`/one/customers/${id}`)
+	return data.data
+}
 
 const postCustomer = customer => {
 	return axiosInstance.post('/customers', customer)
 }
 
-export { getCustomer, postCustomer }
+export { getCustomers, getCustomer, postCustomer }

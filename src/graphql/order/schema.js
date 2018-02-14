@@ -3,6 +3,8 @@ const schema = `
 		id: ID!,
 		shop: Building!,
 		customer: Building!
+		route: ID!,
+		source: String
 	}
 
 	input CoordinatesInput {
@@ -19,7 +21,8 @@ const schema = `
 
 const query = `
 	orders: [Order],
-	order(id: ID!): Order
+	order(id: ID!): Order,
+	orderFromRoute(routeId: ID!): Order
 `
 
 const mutation = `

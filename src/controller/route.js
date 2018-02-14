@@ -1,36 +1,42 @@
 import { hives } from './hive'
 import { getRoutes, getRoute } from '~/src/persistence/route'
+import { building } from '~/src/controller/building'
 
 const routes = async () => {
 	const objects = await getRoutes()
-	const hiveObjects = await hives()
 
 	return objects.map(route => {
-		return buildRoute(route, hiveObjects)
+		return buildRoute(route)
 	})
 }
 
 const route = async id => {
 	const object = await getRoute(id)
-	const hiveObjects = await hives()
 
-	return buildRoute(object[0], hiveObjects)
+	return buildRoute(object[0])
 }
 
-const buildRoute = (route, hiveObjects) => {
-	const hops = route._route.map(hop => {
-		const start = hiveObjects.find(building => building.id === hop.start.id)
-		const end = hiveObjects.find(building => building.id === hop.end.id)
+const buildRoute = route => {
+	const hops = route['hop/_route'].map(async hop => {
+		const start = await building(hop['hop/start']['db/id'])
+		const end = await building(hop['hop/end']['db/id'])
 
 		return {
-			id: hop.id,
+			id: hop['db/id'],
 			start,
 			end,
 		}
 	})
+
+	const origin =
+		route['route/origin']['db/ident'] === 'route.origin/order'
+			? 'order'
+			: 'distribution'
+
 	return {
-		id: route.id,
+		id: route['db/id'],
 		hops,
+		origin,
 	}
 }
 

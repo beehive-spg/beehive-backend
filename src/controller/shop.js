@@ -1,25 +1,35 @@
-import { getShops } from '~/src/persistence/shop'
+import { getShops, getShop } from '~/src/persistence/shop'
 
 const shops = async () => {
 	const objects = await getShops()
 
 	return objects.map(building => {
-		const shopObjects = building.shop.map(shop => {
-			return {
-				id: shop.id,
-				name: shop.name,
-			}
-		})
-		return {
-			id: building.id,
-			location: {
-				address: building.address,
-				longitude: building.xcoord,
-				latitude: building.ycoord,
-			},
-			type: shopObjects,
-		}
+		return buildShop(building)
 	})
 }
 
-export { shops }
+const shop = async id => {
+	const object = await getShop(id)
+	return buildShop(object)
+}
+
+const buildShop = building => {
+	const shopObjects = building['building/shop'].map(shop => {
+		return {
+			id: shop['db/id'],
+			name: shop['shop/name'],
+		}
+	})
+
+	return {
+		id: building['db/id'],
+		location: {
+			address: building['building/address'],
+			longitude: building['building/xcoord'],
+			latitude: building['building/ycoord'],
+		},
+		type: shopObjects,
+	}
+}
+
+export { shops, shop, buildShop }
