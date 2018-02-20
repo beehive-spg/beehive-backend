@@ -6,7 +6,7 @@ const getRoutes = async () => {
 }
 
 const getRoute = async id => {
-	const data = await axiosInstance(`/routes?id=${id}`)
+	const data = await axiosInstance(`/routes?ids=${id}`)
 	return data.data
 }
 
