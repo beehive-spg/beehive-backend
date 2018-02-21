@@ -6,7 +6,7 @@ const getShops = async () => {
 }
 
 const getShop = async id => {
-	const data = await axiosInstance.get(`/one/shops/${id}`)
+	const data = await axiosInstance.get(`/api/tobuilding/${id}`)
 	return data.data
 }
 

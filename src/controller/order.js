@@ -34,19 +34,23 @@ const buildOrder = async order => {
 }
 
 const createOrder = async order => {
-	const customer = {
+	const customerObject = {
 		address: order.customer.address,
 		xcoord: order.customer.longitude,
 		ycoord: order.customer.latitude,
 		name: 'not implemented yet',
 	}
 
-	const data = await postCustomer(customer)
+	const data = await postCustomer(customerObject)
+
+	const from = order.shop
+	const to = `${data.data['building/customer'][0]['db/id']}`
 
 	const orderObject = {
-		shop: order.shop,
-		customer: `${data.data['db/id']}`,
+		from,
+		to,
 	}
+
 	produceOrder(orderObject)
 
 	return true

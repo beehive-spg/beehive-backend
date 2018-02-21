@@ -10,7 +10,7 @@ const shops = async () => {
 
 const shop = async id => {
 	const object = await getShop(id)
-	return buildShop(object)
+	return buildShop(object[0][0])
 }
 
 const buildShop = building => {
