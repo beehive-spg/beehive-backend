@@ -10,7 +10,7 @@ const customers = async () => {
 
 const customer = async id => {
 	const object = await getCustomer(id)
-	return buildCustomer(object[0][0])
+	return buildCustomer(object[0])
 }
 
 const buildCustomer = building => {
