@@ -22,8 +22,8 @@ const buildRoute = route => {
 		const start = await building(hop['hop/start']['db/id'])
 		const end = await building(hop['hop/end']['db/id'])
 
-		const startdate = new Date(hop['hop/starttime'])
-		const enddate = new Date(hop['hop/endtime'])
+		const startdate = hop['hop/starttime']
+		const enddate = hop['hop/endtime']
 
 		const distance = hop['hop/distance']
 		const droneSpeed = speed(startdate, enddate, distance)
