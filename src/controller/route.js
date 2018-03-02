@@ -1,6 +1,7 @@
 import { hives } from './hive'
 import { getRoutes, getRoute } from '~/src/persistence/route'
 import { building } from '~/src/controller/building'
+import speed from '~/src/utils/speed'
 
 const routes = async () => {
 	const objects = await getRoutes()
@@ -21,10 +22,18 @@ const buildRoute = route => {
 		const start = await building(hop['hop/start']['db/id'])
 		const end = await building(hop['hop/end']['db/id'])
 
+		const startdate = hop['hop/starttime']
+		const enddate = hop['hop/endtime']
+
+		const distance = hop['hop/distance']
+		const droneSpeed = speed(startdate, enddate, distance)
 		return {
 			id: hop['db/id'],
 			start,
 			end,
+			startdate,
+			enddate,
+			speed: droneSpeed,
 		}
 	})
 

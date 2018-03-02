@@ -3,6 +3,9 @@ const schema = `
 		id: ID!,
 		start: Building!,
 		end: Building!,
+		startdate: String!,
+		enddate: String!,
+		speed: Float!
 	}
 
 	type Route {
