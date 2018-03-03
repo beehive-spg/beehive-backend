@@ -1,5 +1,23 @@
+import { format, addHours, differenceInSeconds } from 'date-fns'
 import { DEPARTURE, ARRIVAL } from '~/src/constants'
 import pubsub from '~/src/graphql/pubsub'
+import { routes } from '~/src/controller/route'
+
+const ongoingFlights = async () => {
+	const routeObjects = await routes()
+	const time = format(addHours(Date.now(), 1), 'x')
+
+	const flights = routeObjects.map(async route => {
+		const hops = await Promise.all(route.hops)
+
+		const hop = hops.find(hop => hop.startdate < time && hop.enddate > time)
+		return {
+			hopId: hop.id,
+			routeId: route.id,
+		}
+	})
+	return flights
+}
 
 const processFlight = data => {
 	data.type === 'dep' ? sendDeparture(data) : sendArrival(data)
@@ -26,4 +44,4 @@ const buildFlight = flight => {
 	}
 }
 
-export { processFlight }
+export { ongoingFlights, processFlight }
