@@ -5,9 +5,12 @@ const schema = `
 	}
 `
 
+const query = `
+	ongoingFlights: [Flight]
+`
 const subscription = `
 	departure: Flight,
 	arrival: Flight
 `
 
-export { schema, subscription }
+export { schema, query, subscription }

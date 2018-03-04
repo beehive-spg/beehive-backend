@@ -1,7 +1,9 @@
+import { format, addHours, differenceInSeconds } from 'date-fns'
 import { axiosInstance } from '~/src/server'
 
 const getRoutes = async () => {
-	const data = await axiosInstance.get('/routes')
+	const time = format(addHours(Date.now(), 1), 'x')
+	const data = await axiosInstance.get(`/api/ongoing-routes/${time}`)
 	return data.data
 }
 
