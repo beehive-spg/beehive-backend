@@ -1,6 +1,6 @@
-import { ongoingFlights } from '~/controller/flight'
-import pubsub from '~/graphql/pubsub'
-import { DEPARTURE, ARRIVAL } from '~/constants'
+import { ongoingFlights } from 'controller/flight'
+import pubsub from 'graphql-schema/pubsub'
+import { DEPARTURE, ARRIVAL } from 'constants'
 
 const resolver = {
 	Query: {

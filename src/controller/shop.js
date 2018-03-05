@@ -1,4 +1,4 @@
-import { getShops, getShop } from '~/persistence/shop'
+import { getShops, getShop } from 'persistence/shop'
 
 const shops = async () => {
 	const objects = await getShops()

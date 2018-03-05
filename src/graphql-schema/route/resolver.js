@@ -1,4 +1,4 @@
-import { routes, route } from '~/controller/route'
+import { routes, route } from 'controller/route'
 
 const resolver = {
 	Query: {

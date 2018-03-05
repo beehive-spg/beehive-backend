@@ -1,4 +1,4 @@
-import { getHives, getCosts } from '~/persistence/hive'
+import { getHives, getCosts } from 'persistence/hive'
 
 const hives = async () => {
 	const objects = await getHives()

@@ -1,4 +1,4 @@
-import { axiosInstance } from '~/server'
+import { axiosInstance } from 'server'
 
 const getCustomers = async () => {
 	const data = await axiosInstance.get('/customers')

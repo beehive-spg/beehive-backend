@@ -10,7 +10,7 @@ import { SubscriptionServer } from 'subscriptions-transport-ws'
 import { graphqlKoa, graphiqlKoa } from 'apollo-server-koa'
 import axios from 'axios'
 
-import schema from './graphql'
+import schema from './graphql-schema'
 
 require('dotenv').config({ path: path.join(process.env.PWD, '.env') })
 
