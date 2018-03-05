@@ -1,7 +1,8 @@
 import path from 'path'
 import jackrabbit from 'jackrabbit'
 
-import { processFlight } from '~/src/controller/flight'
+// import { processFlight } from '~/src/controller/flight'
+import { processFlight } from '~/controller/flight'
 
 require('dotenv').config({ path: path.join(process.env.PWD, '.env') })
 

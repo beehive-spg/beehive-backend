@@ -1,5 +1,5 @@
 import { format, addHours } from 'date-fns'
-import { axiosInstance } from '~/src/server'
+import { axiosInstance } from '~/server'
 
 const getStatistics = async id => {
 	const time = format(addHours(Date.now(), 1), 'x')

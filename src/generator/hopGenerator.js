@@ -1,7 +1,7 @@
 import fs from 'fs'
 import turf from 'turf'
 
-import { DRONE_ADDED, DRONE_REMOVED } from '~/src/constants/topicNames'
+import { DRONE_ADDED, DRONE_REMOVED } from '~/constants/topicNames'
 
 const initialize = pubsub => {
 	let hives = []

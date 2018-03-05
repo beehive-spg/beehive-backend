@@ -1,7 +1,7 @@
-import { getBuilding } from '~/src/persistence/building'
-import { buildHive } from '~/src/controller/hive'
-import { buildShop } from '~/src/controller/shop'
-import { buildCustomer } from '~/src/controller/customer'
+import { getBuilding } from '~/persistence/building'
+import { buildHive } from '~/controller/hive'
+import { buildShop } from '~/controller/shop'
+import { buildCustomer } from '~/controller/customer'
 
 const building = async id => {
 	const object = await getBuilding(id)

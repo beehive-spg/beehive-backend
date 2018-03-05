@@ -1,5 +1,5 @@
 import { format, addHours, differenceInSeconds } from 'date-fns'
-import { axiosInstance } from '~/src/server'
+import { axiosInstance } from '~/server'
 
 const getRoutes = async () => {
 	const time = format(addHours(Date.now(), 1), 'x')

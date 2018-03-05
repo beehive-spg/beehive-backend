@@ -1,6 +1,6 @@
-import { hives } from '~/src/controller/hive'
-import { shops, shop } from '~/src/controller/shop'
-import { customers, customer } from '~/src/controller/customer'
+import { hives } from '~/controller/hive'
+import { shops, shop } from '~/controller/shop'
+import { customers, customer } from '~/controller/customer'
 
 const resolver = {
 	Query: {

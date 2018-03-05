@@ -2,5 +2,12 @@
   "presets": ["env"],
   "plugins": [
 	"transform-async-to-generator", 
-	"babel-plugin-root-import"]
+	["babel-plugin-root-import", [{
+	  "rootPathSuffix": "src"
+	}]],
+	["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
+  ]
 }

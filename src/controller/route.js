@@ -1,7 +1,7 @@
 import { hives } from './hive'
-import { getRoutes, getRoute } from '~/src/persistence/route'
-import { building } from '~/src/controller/building'
-import speed from '~/src/utils/speed'
+import { getRoutes, getRoute } from '~/persistence/route'
+import { building } from '~/controller/building'
+import speed from '~/utils/speed'
 
 const routes = async () => {
 	const objects = await getRoutes()

@@ -3,7 +3,7 @@ import {
 	order,
 	orderFromRoute,
 	createOrder,
-} from '~/src/controller/order'
+} from '~/controller/order'
 
 const resolver = {
 	Query: {
