@@ -11,7 +11,6 @@ const getCosts = async id => {
 	const data = await axiosInstance.get(
 		`/api/hivecosts?ids=${id}&time=${time}`,
 	)
-	// console.log(data.data)
 	return data.data
 }
 
