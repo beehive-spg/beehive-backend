@@ -1,3 +1,4 @@
+import { format, addHours } from 'date-fns'
 import { axiosInstance } from '~/src/server'
 
 const getHives = async () => {
@@ -5,4 +6,12 @@ const getHives = async () => {
 	return data.data
 }
 
-export { getHives }
+const getCosts = async id => {
+	const time = parseInt(format(addHours(Date.now(), 1), 'x'))
+	const data = await axiosInstance.get(
+		`/api/hivecosts?ids=${id}&time=${time}`,
+	)
+	return data.data
+}
+
+export { getHives, getCosts }

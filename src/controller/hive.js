@@ -1,4 +1,4 @@
-import { getHives } from '~/src/persistence/hive'
+import { getHives, getCosts } from '~/src/persistence/hive'
 
 const hives = async () => {
 	const objects = await getHives()
@@ -8,13 +8,15 @@ const hives = async () => {
 	})
 }
 
-const buildHive = building => {
+const buildHive = async building => {
 	const hive = building['building/hive']
+	const costs = await getCosts(building['db/id'])
 	const hiveObjects = [
 		{
 			id: hive['db/id'],
 			name: hive['hive/name'],
 			demand: hive['hive/demand'],
+			costs: costs[0]['hive/cost'],
 		},
 	]
 
