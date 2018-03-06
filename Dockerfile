@@ -1,7 +1,5 @@
 FROM node:alpine
 
-# WORKDIR /app
-
 COPY package.json .
 
 RUN npm install --production
@@ -19,16 +17,5 @@ ENV DATABASE_URL=$database
 COPY lib .
 
 EXPOSE 8080
-# COPY .env .
 
 CMD node server.js
-
-# FROM node:latest AS beehive-backend
-
-# WORKDIR /usr/src/backend
-
-# COPY . .
-
-# EXPOSE 8080
-
-# CMD npm install && npm start
