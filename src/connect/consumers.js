@@ -6,7 +6,7 @@ import { processFlight } from 'controller/flight'
 require('dotenv').config({ path: path.join(process.env.PWD, '.env') })
 
 const rabbit = jackrabbit(process.env.RABBITMQ_URL)
-const flights = rabbit.default().queue({ name: process.env.FLIGHTS_QUEUE })
+const flights = rabbit.default().queue({ name: process.env.HOP_QUEUE })
 
 const consumeFlights = () => {
 	flights.consume(onFlight, { noAck: true })
