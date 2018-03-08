@@ -6,18 +6,6 @@ require('dotenv').config({ path: path.join(process.env.PWD, '.env') })
 
 consumers()
 
-rabbit.on('failed', () => {
-	console.log('Failed to connect to RabbitMQ')
-	rabbit.retry()
-})
-rabbit.on('unreachable', () => {
-	console.log('RabbitMQ unreachable')
-	rabbit.retry()
-})
-rabbit.on('connected', () => {
-	console.log('Connected to RabbitMQ')
-})
-
 const connection = {
 	user: 'guest',
 	pass: 'guest',
@@ -28,26 +16,40 @@ const connection = {
 	waitMax: 15000,
 	waitIncrement: 1500,
 }
+const exchanges = [
+	{ name: 'newx', type: 'direct', durable: true },
+	{ name: 'eventex', type: 'direct', durable: true },
+]
+const queues = [
+	{ name: process.env.ORDERS_QUEUE, durable: true },
+	{
+		name: process.env.HOP_QUEUE,
+		durable: true,
+		subscribe: true,
+	},
+]
+const bindings = [
+	{ exchange: 'newx', target: process.env.ORDERS_QUEUE },
+	{ exchange: 'eventex', target: process.env.HOP_QUEUE },
+]
+const settings = { connection, exchanges, queues, bindings }
 
-rabbit.configure({ connection }).then(() => {
-	init()
+rabbit.on('failed', () => {
+	console.log('Failed to connect to RabbitMQ')
+	rabbit.retry()
+})
+rabbit.on('unreachable', () => {
+	console.log('RabbitMQ unreachable')
+	rabbit.retry()
+})
+rabbit.on('connected', () => {
+	console.log('Connected to RabbitMQ')
+	rabbit.connections.default.promise = new Promise((res, rej) => {
+		res()
+	})
+	rabbit.configure(settings).then(() => console.log('Initialized RabbitMQ'))
 })
 
-const init = () => {
-	console.log('Initializing Rabbot...')
-	rabbit.addExchange('newx', 'direct', { durable: true }).catch(error => {
-		console.log(error)
-		setTimeout(() => {
-			init()
-		}, 1000)
-	})
-	rabbit.addExchange('eventex', 'direct', { durable: true })
-
-	rabbit.addQueue(process.env.ORDERS_QUEUE, { durable: true })
-	rabbit.addQueue(process.env.HOP_QUEUE, { durable: true, subscribe: true })
-
-	rabbit.bindQueue('newx', process.env.ORDERS_QUEUE)
-	rabbit.bindQueue('eventex', process.env.HOP_QUEUE)
-
-	console.log('Rabbot initialized')
-}
+rabbit.configure({ connection }).catch(error => {
+	console.log('First RabbitMQ connection attempt failed. ' + error)
+})
