@@ -35,20 +35,18 @@ rabbit.configure({ connection }).then(() => {
 
 const init = () => {
 	console.log('Initializing Rabbot...')
-	rabbit
-		.addExchange('amq.direct', 'direct', { durable: true })
-		.catch(error => {
-			console.log(error)
-			setTimeout(() => {
-				init()
-			}, 1000)
-		})
+	rabbit.addExchange('newx', 'direct', { durable: true }).catch(error => {
+		console.log(error)
+		setTimeout(() => {
+			init()
+		}, 1000)
+	})
 	rabbit.addExchange('eventex', 'direct', { durable: true })
 
 	rabbit.addQueue(process.env.ORDERS_QUEUE, { durable: true })
 	rabbit.addQueue(process.env.HOP_QUEUE, { durable: true, subscribe: true })
 
-	rabbit.bindQueue('amq.direct', process.env.ORDERS_QUEUE)
+	rabbit.bindQueue('newx', process.env.ORDERS_QUEUE)
 	rabbit.bindQueue('eventex', process.env.HOP_QUEUE)
 
 	console.log('Rabbot initialized')
