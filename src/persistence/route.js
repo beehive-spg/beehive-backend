@@ -3,7 +3,12 @@ import { axiosInstance } from 'server'
 
 const getRoutes = async () => {
 	const time = format(addHours(Date.now(), 1), 'x')
-	const data = await axiosInstance.get(`/api/ongoing-routes/${time}`)
+	let data
+	try {
+		data = await axiosInstance.get(`/api/ongoing-routes/${time}`)
+	} catch (error) {
+		console.log(error)
+	}
 	return data.data
 }
 
