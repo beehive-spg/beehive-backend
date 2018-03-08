@@ -17,7 +17,6 @@ require('dotenv').config({ path: path.join(process.env.PWD, '.env') })
 
 const axiosInstance = axios.create({
 	baseURL: process.env.DATABASE_URL,
-	timeout: 1000,
 })
 
 const app = new koa()
