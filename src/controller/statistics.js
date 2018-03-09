@@ -1,4 +1,4 @@
-import { getStatistics } from '~/src/persistence/statistics'
+import { getStatistics } from 'persistence/statistics'
 
 const statistics = id => {
 	return getStatistics(id)

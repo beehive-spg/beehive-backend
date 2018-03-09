@@ -1,4 +1,4 @@
-import { axiosInstance } from '~/src/server'
+import { axiosInstance } from 'server'
 
 const getOrders = async () => {
 	return []

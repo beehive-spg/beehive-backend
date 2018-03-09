@@ -1,9 +1,4 @@
-import {
-	orders,
-	order,
-	orderFromRoute,
-	createOrder,
-} from '~/src/controller/order'
+import { orders, order, orderFromRoute, createOrder } from 'controller/order'
 
 const resolver = {
 	Query: {

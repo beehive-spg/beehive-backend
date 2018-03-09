@@ -10,13 +10,13 @@ import { SubscriptionServer } from 'subscriptions-transport-ws'
 import { graphqlKoa, graphiqlKoa } from 'apollo-server-koa'
 import axios from 'axios'
 
-import schema from './graphql'
+import 'connect'
+import schema from 'graphql-schema'
 
 require('dotenv').config({ path: path.join(process.env.PWD, '.env') })
 
 const axiosInstance = axios.create({
 	baseURL: process.env.DATABASE_URL,
-	timeout: 1000,
 })
 
 const app = new koa()

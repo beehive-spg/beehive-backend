@@ -1,5 +1,5 @@
 import { format, addHours } from 'date-fns'
-import { axiosInstance } from '~/src/server'
+import { axiosInstance } from 'server'
 
 const getHives = async () => {
 	const data = await axiosInstance.get('/hives')

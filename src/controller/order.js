@@ -1,8 +1,8 @@
-import { shop } from '~/src/controller/shop'
-import { customer } from '~/src/controller/customer'
-import { getOrder, getOrderFromRoute } from '~/src/persistence/order'
-import { postCustomer } from '~/src/persistence/customer'
-import { produceOrder } from '~/src/connect/producers'
+import { shop } from 'controller/shop'
+import { customer } from 'controller/customer'
+import { getOrder, getOrderFromRoute } from 'persistence/order'
+import { postCustomer } from 'persistence/customer'
+import { produceOrder } from 'connect/producers'
 
 const orders = () => {}
 

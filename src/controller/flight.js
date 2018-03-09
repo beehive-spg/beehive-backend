@@ -1,7 +1,7 @@
 import { format, addHours, differenceInSeconds } from 'date-fns'
-import { DEPARTURE, ARRIVAL } from '~/src/constants'
-import pubsub from '~/src/graphql/pubsub'
-import { routes } from '~/src/controller/route'
+import { DEPARTURE, ARRIVAL } from 'constants'
+import pubsub from 'graphql-schema/pubsub'
+import { routes } from 'controller/route'
 
 const ongoingFlights = async () => {
 	const routeObjects = await routes()
