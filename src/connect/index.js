@@ -1,8 +1,11 @@
 import path from 'path'
 import rabbit from 'rabbot'
+import winston from 'winston'
 import consumers from './consumers'
 
 require('dotenv').config({ path: path.join(process.env.PWD, '.env') })
+
+const logger = winston.loggers.get('info')
 
 consumers()
 
@@ -35,21 +38,22 @@ const bindings = [
 const settings = { connection, exchanges, queues, bindings }
 
 rabbit.on('failed', () => {
-	console.log('Failed to connect to RabbitMQ')
+	logger.error('Failed to connect to RabbitMQ')
 	rabbit.retry()
 })
 rabbit.on('unreachable', () => {
-	console.log('RabbitMQ unreachable')
+	logger.error('RabbitMQ unreachable')
 	rabbit.retry()
 })
 rabbit.on('connected', () => {
-	console.log('Connected to RabbitMQ')
+	logger.info('Connected to RabbitMQ')
 	rabbit.connections.default.promise = new Promise((res, rej) => {
 		res()
 	})
-	rabbit.configure(settings).then(() => console.log('Initialized RabbitMQ'))
+	rabbit.configure(settings).then(() => logger.info('Initialized RabbitMQ'))
 })
 
 rabbit.configure({ connection }).catch(error => {
-	console.log('First RabbitMQ connection attempt failed. ' + error)
+	logger.error('First RabbitMQ connection attempt failed')
+	logger.error(error)
 })

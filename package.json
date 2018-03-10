@@ -36,7 +36,8 @@
     "rabbot": "2.1.0",
     "schemaglue": "1.5.1",
     "subscriptions-transport-ws": "0.9.0",
-    "webpack-dev-server": "2.8.2"
+    "webpack-dev-server": "2.8.2",
+    "winston": "^3.0.0-rc1"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
