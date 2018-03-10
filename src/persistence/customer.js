@@ -1,16 +1,31 @@
+import winston from 'winston'
 import { axiosInstance } from 'server'
 
+const logger = winston.loggers.get('info')
+
 const getCustomers = async () => {
-	const data = await axiosInstance.get('/customers')
-	return data.data
+	try {
+		const data = await axiosInstance.get('/customers')
+		return data.data
+	} catch (error) {
+		logger.error(error)
+	}
 }
 const getCustomer = async id => {
-	const data = await axiosInstance.get(`/api/tobuilding/${id}`)
-	return data.data
+	try {
+		const data = await axiosInstance.get(`/api/tobuilding/${id}`)
+		return data.data
+	} catch (error) {
+		logger.error(error)
+	}
 }
 
 const postCustomer = customer => {
-	return axiosInstance.post('/customers', customer)
+	try {
+		return axiosInstance.post('/customers', customer)
+	} catch (error) {
+		logger.error(error)
+	}
 }
 
 export { getCustomers, getCustomer, postCustomer }

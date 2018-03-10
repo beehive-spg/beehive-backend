@@ -10,6 +10,8 @@ import { SubscriptionServer } from 'subscriptions-transport-ws'
 import { graphqlKoa, graphiqlKoa } from 'apollo-server-koa'
 import axios from 'axios'
 
+import './logger'
+import winston from 'winston'
 import 'connect'
 import schema from 'graphql-schema'
 
@@ -18,6 +20,8 @@ require('dotenv').config({ path: path.join(process.env.PWD, '.env') })
 const axiosInstance = axios.create({
 	baseURL: process.env.DATABASE_URL,
 })
+
+const logger = winston.loggers.get('info')
 
 const app = new koa()
 const router = new koaRouter()
@@ -71,6 +75,7 @@ ws.listen(PORT, () => {
 			path: '/subscriptions',
 		},
 	)
+	logger.info(`Server running on port ${PORT}`)
 })
 
 export { axiosInstance }
