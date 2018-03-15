@@ -15,7 +15,7 @@ const schema = `
 		id: ID!,
 		name: String,
 		demand: Float,
-		costs: Int
+		costs: Float
 	}
 
 	type Shop {

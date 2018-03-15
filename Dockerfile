@@ -1,8 +1,18 @@
-FROM node:alpine
+FROM node:alpine as build
+
+WORKDIR /app
 
 COPY package.json .
 
-RUN npm install --production
+RUN npm install
+
+COPY src src
+COPY .babelrc .
+
+RUN npm run build
+
+
+FROM node:alpine
 
 ARG orders_queue
 ARG hop_queue
@@ -14,7 +24,11 @@ ENV HOP_QUEUE=$hop_queue
 ENV RABBITMQ_URL=$rabbitmq
 ENV DATABASE_URL=$database
 
-COPY lib .
+COPY --from=build /app/package.json /
+
+RUN npm install --production
+
+COPY --from=build /app/lib /
 
 EXPOSE 8080
 
