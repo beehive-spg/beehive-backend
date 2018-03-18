@@ -16,11 +16,13 @@ FROM node:alpine
 
 ARG orders_queue
 ARG hop_queue
+ARG error_queue
 ARG rabbitmq
 ARG database
 
 ENV ORDERS_QUEUE=$orders_queue
 ENV HOP_QUEUE=$hop_queue
+ENV ERROR_QUEUE=$error_queue
 ENV RABBITMQ_URL=$rabbitmq
 ENV DATABASE_URL=$database
 
