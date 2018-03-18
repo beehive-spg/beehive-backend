@@ -22,7 +22,7 @@ const connection = {
 const exchanges = [
 	{ name: 'newx', type: 'direct', durable: true },
 	{ name: 'eventex', type: 'fanout', durable: true },
-    { name: 'errorex', type: 'direct', durable: true },
+	{ name: 'errorex', type: 'direct', durable: true },
 ]
 const queues = [
 	{ name: process.env.ORDERS_QUEUE, durable: true },
@@ -36,12 +36,12 @@ const queues = [
 const bindings = [
 	{ exchange: 'newx', target: process.env.ORDERS_QUEUE },
 	{ exchange: 'eventex', target: process.env.HOP_QUEUE },
-    { exchange: 'errorex', target: process.env.ERROR_QUEUE},
+	{ exchange: 'errorex', target: process.env.ERROR_QUEUE },
 ]
 const settings = { connection, exchanges, queues, bindings }
 
 rabbit.on('failed', () => {
-    logger.error('Failed to connect to RabbitMQ')
+	logger.error('Failed to connect to RabbitMQ')
 	rabbit.retry()
 })
 rabbit.on('unreachable', () => {
