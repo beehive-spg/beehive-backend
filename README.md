@@ -18,7 +18,7 @@ be found [here](https://github.com/beehive-spg).
 ### Tech/Frameworks used
 * [Koa](http://koajs.com)
 * [Apollo Server](https://github.com/apollographql/apollo-server)
-* [Jackrabbit](https://github.com/hunterloftis/jackrabbit)
+* [rabbot](https://github.com/arobson/rabbot)
 
 ### Prerequisites
 For easier package handling it is advised to use [yarn](https://yarnpkg.com/en/). Also don't forget
