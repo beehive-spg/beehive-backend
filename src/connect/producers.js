@@ -7,4 +7,8 @@ const produceOrder = order => {
 	rabbit.publish('newx', { body: order })
 }
 
-export { produceOrder }
+const produceSetting = setting => {
+	rabbit.publish('settingsx', { body: setting })
+}
+
+export { produceOrder, produceSetting }

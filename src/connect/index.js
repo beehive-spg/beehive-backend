@@ -23,6 +23,7 @@ const exchanges = [
 	{ name: 'newx', type: 'direct', durable: true },
 	{ name: 'eventex', type: 'fanout', durable: true },
 	{ name: 'errorex', type: 'direct', durable: true },
+	{ name: 'settingsx', type: 'fanout', durable: true },
 ]
 const queues = [
 	{ name: process.env.ORDERS_QUEUE, durable: true },
@@ -32,11 +33,17 @@ const queues = [
 		subscribe: true,
 	},
 	{ name: process.env.ERROR_QUEUE, durable: true },
+	{ name: 'routing_settings', durable: true },
+	{ name: 'distribution_settings', durable: true },
+	{ name: 'generator_settings', durable: true },
 ]
 const bindings = [
 	{ exchange: 'newx', target: process.env.ORDERS_QUEUE },
 	{ exchange: 'eventex', target: process.env.HOP_QUEUE },
 	{ exchange: 'errorex', target: process.env.ERROR_QUEUE },
+	{ exchange: 'settingsx', target: 'routing_settings' },
+	{ exchange: 'settingsx', target: 'distribution_settings' },
+	{ exchange: 'settingsx', target: 'generator_settings' },
 ]
 const settings = { connection, exchanges, queues, bindings }
 
