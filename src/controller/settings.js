@@ -12,7 +12,7 @@ const settings = async () => {
 	return {
 		distribution: false,
 		routing: true,
-		drones: 20,
+		drones: 0,
 	}
 }
 
